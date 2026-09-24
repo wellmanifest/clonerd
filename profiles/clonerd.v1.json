@@ -1,0 +1,71 @@
+{
+  "schema": "wellmanifest.clonerd/profile/v1",
+  "version": "0.1.0",
+  "status": "experimental",
+  "home": "wellmanifest",
+  "shape": "domain_pack",
+  "runtimeOwner": "clonerd-com",
+  "presentation": {
+    "anonymous": "#22d3ee",
+    "demo": "#22d3ee",
+    "authenticated": "#21efad",
+    "auto": "#facc15",
+    "precedence": [
+      "anonymous",
+      "demo",
+      "auto",
+      "authenticated"
+    ],
+    "authorityFromPresentation": false
+  },
+  "isolation": {
+    "demoEffects": "forbidden",
+    "tenantScope": "server-enforced",
+    "cloudLocalFallback": "forbidden",
+    "secretsInReceipts": "forbidden"
+  },
+  "contracts": {
+    "source": "clonerd-com/app:server/openapi_contract.py",
+    "master": "contracts/openapi/master.v1.json",
+    "projections": "generated",
+    "operationIds": "stable",
+    "nlOutput": "untrusted-proposal",
+    "unsupportedExecution": "explicit-error"
+  },
+  "delivery": {
+    "verifier": "subactor/onedev-agent",
+    "publisher": "subactor/validator-agent",
+    "requiredAppChecks": [
+      "onedev/local-verify",
+      "governance / enforce",
+      "governance / remote lifecycle",
+      "backend (3.12)",
+      "backend (3.13)",
+      "browser"
+    ],
+    "candidateCredentials": "none",
+    "subjectBinding": [
+      "repository",
+      "ticket",
+      "head",
+      "base",
+      "profile",
+      "policy"
+    ],
+    "selfApproval": false,
+    "administrativeBypass": false
+  },
+  "continuation": {
+    "expiredLease": "protected-controller-handoff",
+    "requiredObservations": [
+      "explicit-handoff-or-owner-gone",
+      "revision",
+      "fencingToken",
+      "head",
+      "dirty-state",
+      "receipts"
+    ],
+    "timeoutTransfersOwnership": false,
+    "controllerAvailability": "must-be-observed"
+  }
+}

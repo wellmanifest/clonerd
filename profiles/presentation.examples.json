@@ -1,0 +1,44 @@
+[
+  {
+    "authenticated": false,
+    "mode": "demo",
+    "state": "anonymous",
+    "accent": "#22d3ee",
+    "grantsAuthority": false
+  },
+  {
+    "authenticated": false,
+    "mode": "user",
+    "state": "anonymous",
+    "accent": "#22d3ee",
+    "grantsAuthority": false
+  },
+  {
+    "authenticated": false,
+    "mode": "auto",
+    "state": "anonymous",
+    "accent": "#22d3ee",
+    "grantsAuthority": false
+  },
+  {
+    "authenticated": true,
+    "mode": "demo",
+    "state": "demo",
+    "accent": "#22d3ee",
+    "grantsAuthority": false
+  },
+  {
+    "authenticated": true,
+    "mode": "user",
+    "state": "authenticated",
+    "accent": "#21efad",
+    "grantsAuthority": false
+  },
+  {
+    "authenticated": true,
+    "mode": "auto",
+    "state": "auto",
+    "accent": "#facc15",
+    "grantsAuthority": false
+  }
+]

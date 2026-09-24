@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:wellmanifest:clonerd:profile:v1",
+  "title": "Clonerd composition profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "version",
+    "status",
+    "home",
+    "shape",
+    "runtimeOwner",
+    "presentation",
+    "isolation",
+    "contracts",
+    "delivery",
+    "continuation"
+  ],
+  "properties": {
+    "schema": {
+      "const": "wellmanifest.clonerd/profile/v1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "experimental"
+    },
+    "home": {
+      "const": "wellmanifest"
+    },
+    "shape": {
+      "const": "domain_pack"
+    },
+    "runtimeOwner": {
+      "const": "clonerd-com"
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "anonymous",
+        "demo",
+        "authenticated",
+        "auto",
+        "precedence",
+        "authorityFromPresentation"
+      ],
+      "properties": {
+        "anonymous": {
+          "const": "#22d3ee"
+        },
+        "demo": {
+          "const": "#22d3ee"
+        },
+        "authenticated": {
+          "const": "#21efad"
+        },
+        "auto": {
+          "const": "#facc15"
+        },
+        "precedence": {
+          "const": [
+            "anonymous",
+            "demo",
+            "auto",
+            "authenticated"
+          ]
+        },
+        "authorityFromPresentation": {
+          "const": false
+        }
+      }
+    },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "demoEffects",
+        "tenantScope",
+        "cloudLocalFallback",
+        "secretsInReceipts"
+      ],
+      "properties": {
+        "demoEffects": {
+          "const": "forbidden"
+        },
+        "tenantScope": {
+          "const": "server-enforced"
+        },
+        "cloudLocalFallback": {
+          "const": "forbidden"
+        },
+        "secretsInReceipts": {
+          "const": "forbidden"
+        }
+      }
+    },
+    "contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "master",
+        "projections",
+        "operationIds",
+        "nlOutput",
+        "unsupportedExecution"
+      ],
+      "properties": {
+        "source": {
+          "const": "clonerd-com/app:server/openapi_contract.py"
+        },
+        "master": {
+          "const": "contracts/openapi/master.v1.json"
+        },
+        "projections": {
+          "const": "generated"
+        },
+        "operationIds": {
+          "const": "stable"
+        },
+        "nlOutput": {
+          "const": "untrusted-proposal"
+        },
+        "unsupportedExecution": {
+          "const": "explicit-error"
+        }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verifier",
+        "publisher",
+        "requiredAppChecks",
+        "candidateCredentials",
+        "subjectBinding",
+        "selfApproval",
+        "administrativeBypass"
+      ],
+      "properties": {
+        "verifier": {
+          "const": "subactor/onedev-agent"
+        },
+        "publisher": {
+          "const": "subactor/validator-agent"
+        },
+        "requiredAppChecks": {
+          "const": [
+            "onedev/local-verify",
+            "governance / enforce",
+            "governance / remote lifecycle",
+            "backend (3.12)",
+            "backend (3.13)",
+            "browser"
+          ]
+        },
+        "candidateCredentials": {
+          "const": "none"
+        },
+        "subjectBinding": {
+          "const": [
+            "repository",
+            "ticket",
+            "head",
+            "base",
+            "profile",
+            "policy"
+          ]
+        },
+        "selfApproval": {
+          "const": false
+        },
+        "administrativeBypass": {
+          "const": false
+        }
+      }
+    },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expiredLease",
+        "requiredObservations",
+        "timeoutTransfersOwnership",
+        "controllerAvailability"
+      ],
+      "properties": {
+        "expiredLease": {
+          "const": "protected-controller-handoff"
+        },
+        "requiredObservations": {
+          "const": [
+            "explicit-handoff-or-owner-gone",
+            "revision",
+            "fencingToken",
+            "head",
+            "dirty-state",
+            "receipts"
+          ]
+        },
+        "timeoutTransfersOwnership": {
+          "const": false
+        },
+        "controllerAvailability": {
+          "const": "must-be-observed"
+        }
+      }
+    }
+  }
+}

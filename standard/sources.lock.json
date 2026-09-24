@@ -1,0 +1,709 @@
+{
+  "schema": "wellmanifest.clonerd/sources/v1",
+  "observedAt": "2026-09-24T10:45:53.739663+00:00",
+  "scope": "Local repository entry points and selected architecture/standard sources; neither deployment inventory nor certification. Local HEAD may be unpublished.",
+  "repositories": [
+    {
+      "repository": "clonerd-com/admin-clonerd-com",
+      "revision": "b031518e77740657af75caf8bd21eef283ff29df",
+      "source": "README.md",
+      "sha256": "1540a27a7f5377f458a29df5a66624eec7b063ef987de6b6083f06e91d8d4648",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/api",
+      "revision": "e7fd152ec952803547ca3d37f3aa194d27c3dffb",
+      "source": "README.md",
+      "sha256": "0b1de35453ac00af8b1a19b3b38a6433216f6de48bb24ca048c1fc8f419cfd00",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/api-clonerd-com",
+      "revision": "e046e84f06776846c6ab94c00a12d2d1c691e801",
+      "source": "README.md",
+      "sha256": "b3257dc279f77d63fd1985070b74e2dcfc54c4b405000a4757793ec59c2738f3",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "74ff39a454f6c1573dca0ddb9e434c7df7bf0bcd",
+      "source": "README.md",
+      "sha256": "61c2052977fd2868f156886595c6f1fa97c20228421a0000c944a06436a133f1",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/app-clonerd-com",
+      "revision": "9b5c672bcc51e1c86f3aa17df241e3ff5695ca3d",
+      "source": "README.md",
+      "sha256": "4ba581e98e00ca6942591328097358afa22d7da4302e26041d5443fd46664d67",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/clonerd",
+      "revision": "1adf77da1ed7ed5d3728f7199749ed91abba39bc",
+      "source": "README.md",
+      "sha256": "78324f79f76be72dee8bc0adc0691b431a4d859073afa33006198aaafa2d3224",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/deployment",
+      "revision": "fb6a7dabe29314bffe40ebff6dd7569ccf1cdba3",
+      "source": "README.md",
+      "sha256": "adb72a5e0fbf503afe931c2301c1a2b9d232679a2844e9c9b932f4199d9dc759",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/desktop-clonerd-com",
+      "revision": "b24f82e0fece1edcdd1edd40ac3c25edc26d7f80",
+      "source": "README.md",
+      "sha256": "b772c5dfa814120ea56dda69dfc708be1553695a4bbe49bc98676700a4405fe4",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/do-clonerd-com",
+      "revision": "735ac71ac5b42e45abd41c6e4a4cab4652ed8384",
+      "source": "README.md",
+      "sha256": "832b10425c9ffaab7d27b950073bb466bc09cb0179c187c3ea360711d47f2951",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/docs-clonerd-com",
+      "revision": "6eb754f3b9ffb79ee49d7ed6edfddf157ac29187",
+      "source": "README.md",
+      "sha256": "d89eeb0d79ae8af63a0518aa85fcd56cad7441f88167eaf4259927fd6fc63fc5",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/download-clonerd-com",
+      "revision": "97612666cdc7e9dbcccc77e7266cd1553fc9915b",
+      "source": "README.md",
+      "sha256": "1ab566a1be04ace9084de403c0c2fa061c3c2a56e749146287a4345d59bb9947",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/get-clonerd-com",
+      "revision": "6d9fe71e7db95007de9b08cbeee89f7e0e4846f3",
+      "source": "README.md",
+      "sha256": "b2594fcc1348cffa2ff962c3d505987e84a0b621fdc618fcd9d42dd2af924292",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/host-clonerd-com",
+      "revision": "7c126b76765c0e81725603b960f58f73476d8f0b",
+      "source": "README.md",
+      "sha256": "28c27db35bd5e71b5b71ecb2ef17edc5389718958c28b4de2869b04dff287fa7",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/llm-account-hub",
+      "revision": "97e5b9021de04e5d349de15abe9cd07e650fe026",
+      "source": "README.md",
+      "sha256": "ba622e774053fe4e3e822e3ed3a10f1022589cd190192bd6af7f367bbf47ba90",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/llm-account-inventory",
+      "revision": "78b9eaf141cb801f6790799fbe2e88c4b0d54cc3",
+      "source": "README.md",
+      "sha256": "cf9ae768c4f193554e53e46eb419fcc43d9a26fb8c4646b76544add053eb9849",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/llm-account-tool",
+      "revision": "a4f85f4c3f460c46e088e04c2a30fb5e01bba563",
+      "source": "README.md",
+      "sha256": "94c5a7fa6eba38c4ac763ab311bdf81bf1903c25ebc57704244663d068efa49b",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/mcp-clonerd-com",
+      "revision": "d9d57640fba020d06c8627ae0efccd6e8882d7a4",
+      "source": "README.md",
+      "sha256": "50994a45fa2e4f5cc2152db640825820fafdf44e4228c4ea61eeaa7442a8a80d",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/menu-clonerd",
+      "revision": "a6c703a2736302b10b7b938d2ce7fc627e61445f",
+      "source": "README.md",
+      "sha256": "4a263baccb07cc032f67ad1c940406f3a5f5381e668e15ff68af9cb3e94198e7",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/pay-clonerd-com",
+      "revision": "8b5b26ad8a3b1fd31c2343dd3e1f968ca7443fca",
+      "source": "README.md",
+      "sha256": "8c352767183dd356179bda0de9cd7b4eae86e0a96a391e4039e8b2f4d2c28df0",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/premesh",
+      "revision": "e3f4efc4bb3f35aab9fdbdea8a5f1f5b7dd561da",
+      "source": "README.md",
+      "sha256": "1512b8d82f62a614aa4c5c3fa2bb5939c6de09325659323c5433e6358501c4f0",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/premote",
+      "revision": "f654cb57e87f4c9f19194f64af36b7c67883c68e",
+      "source": "README.md",
+      "sha256": "267f680cd514f01a9ef9bf93e042a795e540fb9f2863a4d2daae0e8991b66786",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/prepanel",
+      "revision": "3942258bfd18935e48586662823160a56a1076da",
+      "source": "README.md",
+      "sha256": "4259902e674795e69293819a6be4fca7fff88dd1427ddac669f6dff6b1414803",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/proxy-clonerd-com",
+      "revision": "0bf945b53ead7b2153c9da852aca5b337e6201e2",
+      "source": "README.md",
+      "sha256": "15e1e461621793571b63ee84d8d3b53f67f50c392af07a08d0d7a7133f9af6c4",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/sh-clonerd-com",
+      "revision": "86ee0150288eced60c3028b7a7176f029cf6ad6c",
+      "source": "README.md",
+      "sha256": "48ab46d855552f94710898d9f152123ba70f0c97238f359c673ff93a5addcc08",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/status-clonerd-com",
+      "revision": "a382c85d4955a6fc1c95dcceae7b38f17de88543",
+      "source": "README.md",
+      "sha256": "96b68b929a007cdaae753b42b5607191eb003711872983ae46d0471252d1c564",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/tests-twin-ux",
+      "revision": "3c2a9bad3ec53b478b5fbd7bed5656cc2abad717",
+      "source": "README.md",
+      "sha256": "e2a14e3dd5ce5ff6aaae933d52c8f21f0bbf321048e95d60c8b140d1fd4cacd2",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/theme",
+      "revision": "68a4322cd232657bfd01418aa046b4cdd5026950",
+      "source": "README.md",
+      "sha256": "2d80c10e8046742ef891de47e0539b1d458c9deecb95588a3b2ed3720da39a2e",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/user-clonerd-com",
+      "revision": "6f44e74201824ffee0c426f23828a4940ae0e0fa",
+      "source": "README.md",
+      "sha256": "97cdee0a5302db52de8e517b8a27af464cf8bb92bb305a9cd096e686ebdf5d46",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/vncguard",
+      "revision": "12e63795717642c6c0d76c8d709714d25c4ad162",
+      "source": "README.md",
+      "sha256": "8a10e951e1cd4157e2f84e594b4bf0fe82fcecacb2e41a74791f4fefaafdfc7d",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/vnclone",
+      "revision": "89e3a368c5a791d27e145ad7f00356b3be2fd8d3",
+      "source": "README.md",
+      "sha256": "97c98e17190395367ef4e44a58aebea72001c31939380f4974d7fc70f0c16f49",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "clonerd-com/www-clonerd-com",
+      "revision": "f33423f04aef591adafb0075dafc45c23f1613a1",
+      "source": "README.md",
+      "sha256": "61e614efb1f860c98785ce4445359db0e4a18799c7491d6f6fc2ee8c229afbe0",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/.github",
+      "revision": "5c1738768c6993313a9959abb604f674c0067ccc",
+      "source": "README.md",
+      "sha256": "467d01000339e6d6c164420a8cfbb39e14c5b72540b623fb12b7068dae1e4324",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/account-runtime",
+      "revision": "8a5672c1fe898025f68242e7330fa014da7a1ed1",
+      "source": "README.md",
+      "sha256": "fdf0ffc441d9459da592f7bc48aad95068a818f8c78fef3ee82cd114a01ce593",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/agent",
+      "revision": "118ab6cffd56b98b18e57460799fc5e77c06d4e2",
+      "source": "README.md",
+      "sha256": "9f280f8734787724b2defa145926bb5d783807092c872cc86f97cff7392f454a",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/anonym",
+      "revision": "fe8c849a574e794e3db94a95701de836cdf2893e",
+      "source": "README.md",
+      "sha256": "5e23bb53b74b0a53730b963bee7c227230aec72a59e6e48429eba4639b3ae915",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/auth-lifecycle",
+      "revision": "1cf6d5ff842ffbeded445c8aa9ba26525805b4c2",
+      "source": "README.md",
+      "sha256": "2efdfa90133480fde9d4faae53fe38e7345809150438f4b3270df478d8a9e0e2",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/authority-lifecycle",
+      "revision": "53f21d6bf7cc0af28531fdb5e22f0d08948eb367",
+      "source": "README.md",
+      "sha256": "da73b04f751041a774ba3755ce5be668cbb03e73dd9dc84a01f4522f53884a1f",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/autonomy",
+      "revision": "9175e08ac5608567f69cdbda2dd6f9b305012f3d",
+      "source": "README.md",
+      "sha256": "69120673c2a5a95b0105012f100ba9e65b689da400d954a7659f3d325ac83f9a",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/brand",
+      "revision": "e0b69b31784589431425ae7bf5593f7e8855fd39",
+      "source": "README.md",
+      "sha256": "5a91a89f53aa629285593ac0ca721b34ffbc26feb8ed2855e1fcd5857d2a4e14",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/code-dsl",
+      "revision": "967aace47de209fb6eb983eb7de75bc8f7d3e3c9",
+      "source": "README.md",
+      "sha256": "4033fc219bf5ac63b4793b6cdc829d7bd1aaf39705a742e648d5a7e2fa39933d",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/deployment",
+      "revision": "3624ea9cb9a4951dc20a06ee3524724958f36978",
+      "source": "README.md",
+      "sha256": "0b17d92e760f6234968eefc9d84d360b60743be69c749b582c6128047b892a22",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/docs",
+      "revision": "19efafbeb18923cfd51cc69bd519330488500137",
+      "source": "README.md",
+      "sha256": "10ee6a3140471c1ab25277f0bbeef33053d3ab9cf4e0f4bf8279c3c9a63d11ae",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/dsl",
+      "revision": "ef191618ac620c749871279cd004be9e068b5471",
+      "source": "README.md",
+      "sha256": "0db08cd0ab22798a61d79b8abc9bad2c1250e888fc49ad8f8c67d1c8bf975660",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/env-dsl",
+      "revision": "94354b3ad94cf5b64bdd2d80de3f3757c677b759",
+      "source": "README.md",
+      "sha256": "22d7e556002e84f90c60757a7d3afd806b2cb357b2da52876fdbac7ee1f2502f",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/git-lifecycle",
+      "revision": "2f8ba2ee724fce603ead2c3067c698d3c2ce0e59",
+      "source": "README.md",
+      "sha256": "6f2f597d32e199dc6217cfdf3f44cf3278695f7997b3db5b630ba6e885d0c8b6",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/goal",
+      "revision": "8469a23da16ffa703fc835ccc582b011aee9dee7",
+      "source": "README.md",
+      "sha256": "7f4c438f28deb5bb92b016394eb86dff2e404454051fe1621985f470bf6268db",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/gui",
+      "revision": "ce177df854e97720250e7b9f379b033db633614a",
+      "source": "README.md",
+      "sha256": "908c07c3481ba19e299b876aa60859000069a9df44f810e48c57afda91d7f419",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/hostguard",
+      "revision": "f91ee5e9cc671ecb9786ea5b099b15f511804d10",
+      "source": "README.md",
+      "sha256": "48d7645ef89427f2b9ef37166da01fb7d67ebf5d1789d533d3e0106feac9a7c1",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/how-to-use-subactor",
+      "revision": "d2a1ffc5f23f079fede449b8d4e964b76fbbd5db",
+      "source": "README.md",
+      "sha256": "bc565fad09a36a694dedf4a86b1556ec34065c184a5eb0444960655e9a69444b",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/incubator",
+      "revision": "bda1a2c0a14b024bdeb22819c5c3dc0b2852e610",
+      "source": "README.md",
+      "sha256": "cdfdab3c7211d404ea32081bc05ee328cf3b74b6c07f2b7368f4860bcf04f665",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/jsonl",
+      "revision": "133b5e9ea9ba5bcddc2038ba0d72984fc4582d53",
+      "source": "README.md",
+      "sha256": "f828ee5bb3e02e33601d8ffa08ed545af2359098fb97da799bb7ebe9ecc842f8",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/landing-page",
+      "revision": "458ec4e726252aa78fb18198313dba68a10a40f8",
+      "source": "README.md",
+      "sha256": "8842427eca1301b4d884bb710d6c78371ca190be344541c911f013c4d24dcc30",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/legal-lifecycle",
+      "revision": "a04558dc1486f94c837c4b776536bc4c4b54c403",
+      "source": "README.md",
+      "sha256": "4d06c1326b94b35385ea6e6c9429ad6996d4d8304f3d3e9eff48436b3fcd1568",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/lifecycle",
+      "revision": "93c6f1340023887cfe89a30fbab7c1cb078a5d10",
+      "source": "README.md",
+      "sha256": "40738fc8b9e39f379d31a6a020888f6c10c81c2e8d44ac28f89da44f9840d703",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/llm",
+      "revision": "ea40885a5cd97760ba5d9a5cbd33f1b388acab35",
+      "source": "README.md",
+      "sha256": "0b890b9d1baef6c08c9a5af10970c050413ee3e46838a231636e204179da3bcd",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/llm-account-tool",
+      "revision": "a304345104b52b86d4f0c4e52c8208a3b98e88b1",
+      "source": "README.md",
+      "sha256": "cb19aa9d5a007c90abe8ab588f206447291a03aadf9bf4289914242386724975",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/logs",
+      "revision": "cd9d9558e09b9135ef92712096eb951fd524aa75",
+      "source": "README.md",
+      "sha256": "31eff78beb626b7fd015ff329bdceeed2ef451ba97b1ccde150ce885e95fb250",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/merge",
+      "revision": "d514ea17cdd0dda3e3a540779d91ed53951f76b0",
+      "source": "README.md",
+      "sha256": "e8086318baebddce2c89e697398f7a8773d8e314d7185ae4ed8e9b344481fc25",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/modularity",
+      "revision": "9fe13d213786e300acd52a27177c9ac1bf6d2fc7",
+      "source": "README.md",
+      "sha256": "48df3be7d64b27f48e15aa2d1303380433feb09299c09262395ab6028e82bc74",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/new-project",
+      "revision": "42dce766825f35b2a97cf16c9bf72e80a4a0c2d3",
+      "source": "README.md",
+      "sha256": "5dd3ccdfe31d166aff3eec1d0bbe512b3738abb5005356f33477d5da76fee187",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/nl-api-llm",
+      "revision": "8561b24afe5cd574369bc88d45dde7ab98a4f470",
+      "source": "README.md",
+      "sha256": "f0fbc0a7e936c43baf853e8c3380ec1c6480ec23a8eb6e82a676da364a2809c7",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/nl-dsl-llm",
+      "revision": "2040efe37b9eb898350f3fec0285a2d4e69d4e34",
+      "source": "README.md",
+      "sha256": "52b15c2b499a91eb842c71801bcea64653297728980ea19eb45e6b1f89e42c66",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/offer",
+      "revision": "6b4b8bfc9f562df0897ce518c3a5cc93465f5864",
+      "source": "README.md",
+      "sha256": "9e558e1f52527bdad99d1ad42d0ef18f90983bc87eb7096bd2d551afd8a10572",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/pcb",
+      "revision": "41d470476d9d9cbd56c9d488e549c4b02219515a",
+      "source": "README.md",
+      "sha256": "23ce5db5a98c79ad34b2edb3f80ea31b4d33343342c7c12362e15a771a2705eb",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/performance",
+      "revision": "ef5e8d95c4408d740e40f6390eb9f6954ee75737",
+      "source": "README.md",
+      "sha256": "e724f4af22e70c1aee6688ab0f9dce503344480807ef2601b43d894bcc38b507",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/planfile",
+      "revision": "0f4469276b9f8027d3cfa6c05948cc2b52424560",
+      "source": "README.md",
+      "sha256": "2eb375cfd0d024c5f911b8b29bb721e59850d71d93f9f9616a460c4605f0666d",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/poa",
+      "revision": "64430e3b9df16d5d6da37d4f5d5017f8ec010549",
+      "source": "README.md",
+      "sha256": "13e10c52d438d7ef3fd7bfa5413f555a69837c4aff3efd6521fa82d918d4cfb6",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/policy-dsl",
+      "revision": "1d1e097878d706fbc4e7b4351665ccdbcea89730",
+      "source": "README.md",
+      "sha256": "b9db9d54e9a8747e8c1de6af0d7bc85599bdd008b2caed2ada3ea623d624569e",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/priority",
+      "revision": "cc18563d673f34c56d864dac2607435d99546af2",
+      "source": "README.md",
+      "sha256": "18211369c9fb7a5f6c40417081d77fda8139abc127bdae45ae350ea64f5a809c",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/product-lifecycle",
+      "revision": "2b19c7407554ee3ddca5cd775e78ad2ac3e06d8e",
+      "source": "README.md",
+      "sha256": "ade713b181574aa6ab88e6fc138f2e6223099dff91ab18bd0d7290a77c4aa230",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/project-ssot",
+      "revision": "9d5921e7177cabfbb77668018c1e6ad251f761d7",
+      "source": "README.md",
+      "sha256": "8346c800c26ac85b30e88c6cfa26ca4eea58432b0dbd3458030711b6f7efbd8f",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/python",
+      "revision": "fd3e37ad3bb82f7ff4b108ebed45c05418e2d8af",
+      "source": "README.md",
+      "sha256": "9fe45425ae6ec8bc6f2e3b25759a877680278a8f08bd2dfb1bc22e3ff043fbb0",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/repair-lifecycle",
+      "revision": "17fe37d9917b74e4a26eed43650355c447e7c098",
+      "source": "README.md",
+      "sha256": "0cb47d38708164b4b06f182ad67a408a2c532705a1e69b5ae2f76c4a8ca5530e",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/report",
+      "revision": "788b68ae565af1f09804768e94ce0fe6cc8870ca",
+      "source": "README.md",
+      "sha256": "aa121d9848067c8854cbf8ac464102c2eabd0b999861f26d202847b03169d7fe",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/saas-lifecycle",
+      "revision": "7f216cf5f3d53a19ff81839f1c2657e1c4814157",
+      "source": "README.md",
+      "sha256": "e4ec1b2a08baa93310893e912eda09d940162f3409473e96bbbeecd2ac7ee2fc",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/sch",
+      "revision": "af516a535e10fd7408f024182785c6e0bc7826c5",
+      "source": "README.md",
+      "sha256": "70a133b4248471e2e828a3b25b5dd8ccb56198a8b9a7808258e031d0ca29fd96",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/skills",
+      "revision": "151f3d5f970b68805e2996d97a2cf0a16252ef7f",
+      "source": "README.md",
+      "sha256": "2b2919597404ef3cf9292f71a96dc6f9a95fb13d981699fa371ca0035aaf7b76",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/ssot",
+      "revision": "5cd33b2e7598eb42fcc00485043fdde910b108f2",
+      "source": "README.md",
+      "sha256": "7efce22c6f36267628328c51dd5d301419e00aac0cce9dcac98999ca510b1288",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/status",
+      "revision": "d23983a10510ded7dcc3ab2d59bf731e15fab8cf",
+      "source": "README.md",
+      "sha256": "12ac354cb2fb1d88798bb996acef9b0f5a5d8092bd1fbad3ade7f360fce84f6d",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/taskand",
+      "revision": "e1c6072065489ac1b907b4fd4de6c45494601320",
+      "source": "README.md",
+      "sha256": "28665b8e9a618ba5e66ac2502cb25ec5950584aca142626853b90f4d9adf8e42",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/ticket-lifecycle",
+      "revision": "ad363efa7705919ff613305172bf8115ccf50b15",
+      "source": "README.md",
+      "sha256": "626fc04760d1ae3ae7e66be948063eddd3428af6df60cefe0ec3ae70022e845a",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/twin-lifecycle",
+      "revision": "813ea2135d81ed59b9f67e7c2546c5c0755ba874",
+      "source": "README.md",
+      "sha256": "0eb26e3aeb187a6ac8f4d7b47b6d4ea534710bd615c5f4182a2695645ea6851d",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/uriprocess",
+      "revision": "cfbb937da9323c347f70a3f23e26c3264b5c2dd8",
+      "source": "README.md",
+      "sha256": "9f0d56677f2c1121ea9f4e100d7c6697ca8b5cc28c521d6d349cab7ad40359b9",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/validation-attestation",
+      "revision": "17017b62374ccf8370d9b50efd3b8f44f66a09e8",
+      "source": "README.md",
+      "sha256": "8a4610cf64b3d6b07660714f5e85d15a9ab69523f0a3dcf5bf8734f010e3951c",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/webpage",
+      "revision": "ab434982852ad643e6e325479ce2a3ec76eadc19",
+      "source": "README.md",
+      "sha256": "17f3fd0fdf3ca2a66eb2749536526bb0c57899a136df1661262ccb9774e1e09f",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/webpage.yaml",
+      "revision": "991550cb2a7c6a5cc7291c4daeefd266e6197adc",
+      "source": "README.md",
+      "sha256": "43ca18339ce2f65eac306bf3d9b663c38b8fdf48d16622f5e0f488872ac87aef",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/wellm",
+      "revision": "3edd55b4b8952a4a0d5027cbcc68c7533ca62c8c",
+      "source": "README.md",
+      "sha256": "61122f3bee254ba7cbe61d7101eb5c506dbd6a7b1dbb322f397e2b471c482f86",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/wellman",
+      "revision": "c8c4a8b098582f800d23d74eb1755a254346ad88",
+      "source": "README.md",
+      "sha256": "1ad608ae83d3e4cc642212596b8ff24c9f849ec0cbfd9c36e1547e560da01c87",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/worktrees",
+      "revision": "d8e91cfe1fa923bf825fa7a4aa0da1c6e84a2a93",
+      "source": "README.md",
+      "sha256": "1b641bbe6f4a84a0724a4f855c1c8099cecfd7a9e9fafc4ffc80b2085903b625",
+      "review": "entry-point inventory; not exhaustive code audit"
+    },
+    {
+      "repository": "wellmanifest/www",
+      "revision": "458ec4e726252aa78fb18198313dba68a10a40f8",
+      "source": "README.md",
+      "sha256": "8842427eca1301b4d884bb710d6c78371ca190be344541c911f013c4d24dcc30",
+      "review": "entry-point inventory; not exhaustive code audit"
+    }
+  ],
+  "reviewedSources": [
+    {
+      "repository": "wellmanifest/new-project",
+      "revision": "42dce766825f35b2a97cf16c9bf72e80a4a0c2d3",
+      "path": "AGENTS.md",
+      "sha256": "8fadbe7c31c8f4bf42260df3367dbe43dddcef6c67f08a18f185939e3ad609cd",
+      "url": "https://github.com/wellmanifest/new-project/blob/42dce766825f35b2a97cf16c9bf72e80a4a0c2d3/AGENTS.md"
+    },
+    {
+      "repository": "wellmanifest/new-project",
+      "revision": "42dce766825f35b2a97cf16c9bf72e80a4a0c2d3",
+      "path": "docs/information/local-ci-publication.md",
+      "sha256": "2d368cc78bfdc07420a8711e8c4f811e4d23b7e13dd647895318c9d608379ebf",
+      "url": "https://github.com/wellmanifest/new-project/blob/42dce766825f35b2a97cf16c9bf72e80a4a0c2d3/docs/information/local-ci-publication.md"
+    },
+    {
+      "repository": "wellmanifest/docs",
+      "revision": "19efafbeb18923cfd51cc69bd519330488500137",
+      "path": "docs/standard/POLICY.md",
+      "sha256": "f113fcc733c08e6e3ff9afa94d5a22b3eda40d4f4ff999518e939c8057c3c919",
+      "url": "https://github.com/wellmanifest/docs/blob/19efafbeb18923cfd51cc69bd519330488500137/docs/standard/POLICY.md"
+    },
+    {
+      "repository": "wellmanifest/authority-lifecycle",
+      "revision": "53f21d6bf7cc0af28531fdb5e22f0d08948eb367",
+      "path": "README.md",
+      "sha256": "da73b04f751041a774ba3755ce5be668cbb03e73dd9dc84a01f4522f53884a1f",
+      "url": "https://github.com/wellmanifest/authority-lifecycle/blob/53f21d6bf7cc0af28531fdb5e22f0d08948eb367/README.md"
+    },
+    {
+      "repository": "wellmanifest/account-runtime",
+      "revision": "8a5672c1fe898025f68242e7330fa014da7a1ed1",
+      "path": "README.md",
+      "sha256": "fdf0ffc441d9459da592f7bc48aad95068a818f8c78fef3ee82cd114a01ce593",
+      "url": "https://github.com/wellmanifest/account-runtime/blob/8a5672c1fe898025f68242e7330fa014da7a1ed1/README.md"
+    },
+    {
+      "repository": "wellmanifest/twin-lifecycle",
+      "revision": "813ea2135d81ed59b9f67e7c2546c5c0755ba874",
+      "path": "README.md",
+      "sha256": "0eb26e3aeb187a6ac8f4d7b47b6d4ea534710bd615c5f4182a2695645ea6851d",
+      "url": "https://github.com/wellmanifest/twin-lifecycle/blob/813ea2135d81ed59b9f67e7c2546c5c0755ba874/README.md"
+    },
+    {
+      "repository": "wellmanifest/validation-attestation",
+      "revision": "17017b62374ccf8370d9b50efd3b8f44f66a09e8",
+      "path": "README.md",
+      "sha256": "8a4610cf64b3d6b07660714f5e85d15a9ab69523f0a3dcf5bf8734f010e3951c",
+      "url": "https://github.com/wellmanifest/validation-attestation/blob/17017b62374ccf8370d9b50efd3b8f44f66a09e8/README.md"
+    },
+    {
+      "repository": "wellmanifest/nl-api-llm",
+      "revision": "8561b24afe5cd574369bc88d45dde7ab98a4f470",
+      "path": "README.md",
+      "sha256": "f0fbc0a7e936c43baf853e8c3380ec1c6480ec23a8eb6e82a676da364a2809c7",
+      "url": "https://github.com/wellmanifest/nl-api-llm/blob/8561b24afe5cd574369bc88d45dde7ab98a4f470/README.md"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "74ff39a454f6c1573dca0ddb9e434c7df7bf0bcd",
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "c332fa41300bbc1b20a2146781a207ed6563ba9836f24f38a12dce56f71901e9",
+      "url": "https://github.com/clonerd-com/app/blob/74ff39a454f6c1573dca0ddb9e434c7df7bf0bcd/docs/ARCHITECTURE.md"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "74ff39a454f6c1573dca0ddb9e434c7df7bf0bcd",
+      "path": "web/styles/standardization.css",
+      "sha256": "1e7cba6c3316f843cadc476060fde226ef2ae97718030ef0a6b36699e6b10bc3",
+      "url": "https://github.com/clonerd-com/app/blob/74ff39a454f6c1573dca0ddb9e434c7df7bf0bcd/web/styles/standardization.css"
+    }
+  ]
+}
