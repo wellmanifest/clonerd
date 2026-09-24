@@ -72,5 +72,50 @@ class ConformanceTests(unittest.TestCase):
                 c.presentation(*args)
 
 
+class EnvironmentTests(unittest.TestCase):
+    def example(self):
+        return c.read(ROOT / "profiles/environment.example.json")
+
+    def test_local_and_remote_examples(self):
+        c.validate_environment(self.example())
+        for kind in ("existing-service", "self-hosted"):
+            p = self.example()
+            p["deployment"] = kind
+            p["endpoints"] = {"api": "https://api.example.org", "identity": "https://accounts.example.org"}
+            p["auth"] = {"method": "device-token", "tokenEnv": "MY_DEVICE_TOKEN"}
+            c.validate_environment(p)
+
+    def test_invalid_urls_and_secrets_rejected(self):
+        for url in ("https://user:secret@example.org", "http://example.org", "file:///tmp/a",
+                    "http://localhost:8891/v1", "http://localhost:8891?token=secret"):
+            p = self.example()
+            p["endpoints"]["api"] = url
+            with self.subTest(url=url), self.assertRaises((ValueError, ValidationError)):
+                c.validate_environment(p)
+        for auth in ({"method": "device-token"}, {"method": "device-token", "tokenEnv": "real-secret-value"},
+                     {"method": "user-session", "password": "secret"}):
+            p = self.example()
+            p["auth"] = auth
+            with self.assertRaises(ValidationError):
+                c.validate_environment(p)
+
+    def test_remote_http_and_shared_cookie_host_rejected(self):
+        p = self.example()
+        p["deployment"] = "self-hosted"
+        with self.assertRaises(ValueError):
+            c.validate_environment(p)
+        p = self.example()
+        p["endpoints"]["device"] = "http://localhost:8790"
+        with self.assertRaises(ValueError):
+            c.validate_environment(p)
+
+    def test_missing_pin_and_unknown_option_rejected(self):
+        for key, value in (("sourceRevision", "main"), ("secret", "do-not-store")):
+            p = self.example()
+            p[key] = value
+            with self.assertRaises(ValidationError):
+                c.validate_environment(p)
+
+
 if __name__ == "__main__":
     unittest.main()

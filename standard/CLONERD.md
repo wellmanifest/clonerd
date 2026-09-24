@@ -1,5 +1,8 @@
 # Clonerd composition standard 0.1.0
 
+Start with [the environment reuse guide](REUSE.md) to run and integrate Clonerd.
+This document defines the behavior an integration must preserve.
+
 Status: experimental proposal. HOME `wellmanifest`, SHAPE `domain_pack`.
 This document defines Clonerd-specific requirements. Existing Wellmanifest
 packs retain ownership of generic vocabulary and lifecycle contracts.

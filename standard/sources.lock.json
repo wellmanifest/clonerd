@@ -704,6 +704,67 @@
       "path": "web/styles/standardization.css",
       "sha256": "1e7cba6c3316f843cadc476060fde226ef2ae97718030ef0a6b36699e6b10bc3",
       "url": "https://github.com/clonerd-com/app/blob/74ff39a454f6c1573dca0ddb9e434c7df7bf0bcd/web/styles/standardization.css"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "052aedb137f66ec840478de85d19190dc6890e8d",
+      "path": "scripts/run-dev-stack.py",
+      "sha256": "76fc717b3b479d0464971cacb3e8514bd7e7669cc281c1cf94c7fdb3d2722a86",
+      "url": "https://github.com/clonerd-com/app/blob/052aedb137f66ec840478de85d19190dc6890e8d/scripts/run-dev-stack.py"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "052aedb137f66ec840478de85d19190dc6890e8d",
+      "path": "scripts/init-deploy.py",
+      "sha256": "221a222eccdfa88386f0da1e1b12ade94fb9af8c3a9c40d17ece983b2e146d44",
+      "url": "https://github.com/clonerd-com/app/blob/052aedb137f66ec840478de85d19190dc6890e8d/scripts/init-deploy.py"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "052aedb137f66ec840478de85d19190dc6890e8d",
+      "path": "requirements.txt",
+      "sha256": "c013fc7fff0486d907edc12847135c36f1f64fa9a74f23ec003f4a8fc2dfb8f1",
+      "url": "https://github.com/clonerd-com/app/blob/052aedb137f66ec840478de85d19190dc6890e8d/requirements.txt"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "052aedb137f66ec840478de85d19190dc6890e8d",
+      "path": "server/__main__.py",
+      "sha256": "95abcfbccc17eed0edaa3ee24b1eccf18382621661dede9601809433832c3694",
+      "url": "https://github.com/clonerd-com/app/blob/052aedb137f66ec840478de85d19190dc6890e8d/server/__main__.py"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "052aedb137f66ec840478de85d19190dc6890e8d",
+      "path": "deploy/compose.yml",
+      "sha256": "df5ed533dcd37badb6efc2c58f0454c7ef0927f20012c058d48dc37315264d41",
+      "url": "https://github.com/clonerd-com/app/blob/052aedb137f66ec840478de85d19190dc6890e8d/deploy/compose.yml"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "052aedb137f66ec840478de85d19190dc6890e8d",
+      "path": "packages/clonerd-sdk/src/clonerd_sdk/client.py",
+      "sha256": "6b825761875155d7fe7d53357a91770faf7f5c222c29a26830f0b11887940835",
+      "url": "https://github.com/clonerd-com/app/blob/052aedb137f66ec840478de85d19190dc6890e8d/packages/clonerd-sdk/src/clonerd_sdk/client.py"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "052aedb137f66ec840478de85d19190dc6890e8d",
+      "path": "docs/INTEGRATION-CONTRACTS.md",
+      "sha256": "141077160e9f5e13262d3fbd306865a79e5fd518d286855b9ecb9e663fb98b35",
+      "url": "https://github.com/clonerd-com/app/blob/052aedb137f66ec840478de85d19190dc6890e8d/docs/INTEGRATION-CONTRACTS.md"
+    },
+    {
+      "repository": "clonerd-com/app",
+      "revision": "052aedb137f66ec840478de85d19190dc6890e8d",
+      "path": "docs/DEPLOYMENT.md",
+      "sha256": "b96b72f0fd9c85d319a72d658c2046e6e88c3125a3cadf82818ab481dd23ae08",
+      "url": "https://github.com/clonerd-com/app/blob/052aedb137f66ec840478de85d19190dc6890e8d/docs/DEPLOYMENT.md"
     }
-  ]
+  ],
+  "reuseBaseline": {
+    "application": "052aedb137f66ec840478de85d19190dc6890e8d",
+    "accountTool": "a4f85f4c3f460c46e088e04c2a30fb5e01bba563",
+    "reason": "User clarification: portable reuse instructions grounded in executable startup and SDK sources."
+  }
 }

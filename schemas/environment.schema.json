@@ -1,0 +1,115 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "name",
+    "deployment",
+    "sourceRevision",
+    "endpoints",
+    "auth",
+    "acceptance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "wellmanifest.clonerd/environment/v1"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,62}$"
+    },
+    "deployment": {
+      "enum": [
+        "local-simulator",
+        "self-hosted",
+        "existing-service"
+      ]
+    },
+    "sourceRevision": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "endpoints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "api",
+        "identity"
+      ],
+      "properties": {
+        "api": {
+          "type": "string",
+          "format": "uri"
+        },
+        "identity": {
+          "type": "string",
+          "format": "uri"
+        },
+        "device": {
+          "type": "string",
+          "format": "uri"
+        },
+        "proxy": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "auth": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "method"
+          ],
+          "properties": {
+            "method": {
+              "enum": [
+                "public-read-only",
+                "user-session"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "method",
+            "tokenEnv"
+          ],
+          "properties": {
+            "method": {
+              "const": "device-token"
+            },
+            "tokenEnv": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9_]{0,127}$"
+            }
+          }
+        }
+      ]
+    },
+    "acceptance": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "health",
+          "public-api",
+          "identity",
+          "tenant-isolation",
+          "demo-isolation",
+          "restart",
+          "connector-policy",
+          "tls-routing",
+          "restore"
+        ]
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:wellmanifest:clonerd:environment:v1"
+}

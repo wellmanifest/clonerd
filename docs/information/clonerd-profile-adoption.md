@@ -3,7 +3,7 @@
   "schema": "wellmanifest.docs/document/v1",
   "id": "clonerd-profile-adoption",
   "kind": "information",
-  "version": 1,
+  "version": 2,
   "title": "Clonerd profile adoption and evidence boundaries",
   "status": "proposed",
   "owner": "wellmanifest/clonerd",
@@ -27,8 +27,10 @@
 <!-- docs:section purpose -->
 ## Purpose
 
-Define how a consumer adopts the proposed Clonerd composition profile without
-confusing a declaration with deployed enforcement.
+Help an integrator reuse Clonerd in a new environment. The primary deliverable
+is [the reuse guide](../../standard/REUSE.md): component selection, pinned local
+startup, configuration mapping, SDK examples and acceptance tests. Governance
+below applies to maintainers publishing changes, not ordinary SDK users.
 
 <!-- docs:section scope -->
 ## Scope

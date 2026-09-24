@@ -1,0 +1,22 @@
+{
+  "schema": "wellmanifest.clonerd/environment/v1",
+  "name": "local-pilot",
+  "deployment": "local-simulator",
+  "sourceRevision": "052aedb137f66ec840478de85d19190dc6890e8d",
+  "endpoints": {
+    "api": "http://localhost:8891",
+    "identity": "http://localhost:8891",
+    "device": "http://127.0.0.1:8790"
+  },
+  "auth": {
+    "method": "public-read-only"
+  },
+  "acceptance": [
+    "health",
+    "public-api",
+    "identity",
+    "tenant-isolation",
+    "demo-isolation",
+    "restart"
+  ]
+}

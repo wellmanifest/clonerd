@@ -30,3 +30,16 @@ Publication and adoption are separate from local conformance validation.
 Validation: profile + six presentation fixtures PASS; six unittest methods
 (including 16 unsafe mutation subcases) PASS; governance 0 errors/0 warnings.
 No remote publication or consumer deployment claimed.
+
+## User clarification — reuse in another environment
+
+The deliverable must let a recipient reuse Clonerd independently: choose a
+component set, configure endpoints and identity, start a local pilot, integrate
+via SDK/API and verify acceptance. Governance is supporting material. Add a
+portable environment descriptor and runnable, source-verified instructions
+within the existing standard/profiles/schemas/tests/docs scope.
+
+Reuse validation: ten unit test methods PASS; local two-process simulator
+and SDK public releases PASS on pinned app revision in isolated Python3.12
+with preinstalled dependencies. Fresh dependency installation, authenticated
+browser flow and custom-domain deployment remain consumer acceptance steps.

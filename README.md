@@ -1,37 +1,43 @@
-# wellmanifest/clonerd
+# Clonerd we własnym środowisku
 
-Eksperymentalny standard kompozycji Clonerd: tożsamość, tryby UI, izolacja demo,
-kontrakty domenowe, interpretacja poleceń, digital twins oraz bezpieczne dostarczanie.
-HOME `wellmanifest`, SHAPE `domain_pack`. Runtime pozostaje w `clonerd-com/*`.
+Ten standard odpowiada na pytanie: **jak wykorzystać Clonerd w swoim projekcie
+lub infrastrukturze?** Zawiera wybór komponentów, instrukcję lokalnego startu,
+mapowanie konfiguracji, przykłady SDK/API oraz kryteria odbioru integracji.
 
-- [Standard i granice odpowiedzialności](standard/CLONERD.md)
-- [Profil v1](profiles/clonerd.v1.json) i [zamknięty JSON Schema](schemas/profile.schema.json)
-- [Przykłady sześciu stanów UI](profiles/presentation.examples.json)
-- [Dokumentacja adopcji](docs/README.md)
-- [Rewizje źródeł i inwentaryzacja](standard/sources.lock.json)
+**Zacznij od [przewodnika ponownego użycia](standard/REUSE.md).**
 
-| Stan | Akcent |
-| --- | --- |
-| Przed logowaniem | błękitny `#22d3ee` |
-| Demo, także po zalogowaniu | błękitny `#22d3ee` |
-| Zalogowany, tryb zwykły | zielony `#21efad` |
-| Zalogowany, AUTO | żółty `#facc15` |
+1. Wybierz lokalną próbę, własny serwer albo klienta istniejącej usługi.
+2. Pobierz wskazane wersje komponentów i uruchom minimalny zestaw.
+3. Uzupełnij [opis środowiska](profiles/environment.example.json).
+4. Podłącz własną aplikację przez SDK lub HTTP.
+5. Wykonaj testy odbioru z przewodnika.
 
-Kolor i parametry URL nie nadają uprawnień. Wygaśnięcie rezerwacji nie przekazuje
-własności zadania. Profil wymaga obserwowanego kontrolera i niezależnej walidacji.
+Nie potrzebujesz infrastruktury autora, jego domen ani całej organizacji GitHub.
+Potrzebujesz dostępu do wybranych komponentów i własnej tożsamości w usłudze.
+Opis środowiska jest kontraktem integracji; nie jest instalatorem ani plikiem
+konfiguracyjnym automatycznie wczytywanym przez backend.
 
-## Sprawdzenie profilu
+## Materiały
 
-Python 3.11+ oraz biblioteka `jsonschema` 4.x (Draft 2020-12):
+- [Uruchomienie, konfiguracja, SDK, własny serwer i diagnostyka](standard/REUSE.md)
+- [Schema opisu środowiska](schemas/environment.schema.json)
+- [Reguły zgodności zachowania](standard/CLONERD.md) i [profil](profiles/clonerd.v1.json)
+- [Źródła przypięte do rewizji](standard/sources.lock.json)
+- [Dokumentacja standardu](docs/README.md)
+
+HOME `wellmanifest`, SHAPE `domain_pack`; implementacje pozostają w `clonerd-com/*`.
+Status: eksperymentalny standard lokalny, bez wydania i potwierdzonej adopcji.
+
+## Sprawdzenie dokumentów maszynowych
+
+Python 3.11+ i biblioteka `jsonschema` 4.x:
 
 ```sh
+python3 standard/conformance.py --environment profiles/environment.example.json
 python3 standard/conformance.py
 python3 -m unittest discover -s tests -v
-./project/governance-check.sh
 ```
 
-Walidator działa offline. Testy obejmują deklarację profilu, sześć kombinacji
-sesji/trybu i odrzucanie osłabionych reguł. Nie testują wdrożonej aplikacji,
-nie przejmują rezerwacji i nie wystawiają zatwierdzenia merge.
-
-Stan: propozycja lokalna; brak wydania i potwierdzonej adopcji w Clonerd.
+Walidacja opisu nie sprawdza dostępności serwera. Wyniki testów rzeczywistej
+instancji zapisuje integrator. Zasady pracy nad repozytorium i jego publikacji
+są materiałem dla utrzymujących standard; użytkownik SDK ich nie wdraża.
