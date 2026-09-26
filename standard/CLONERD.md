@@ -100,6 +100,31 @@ be counted as conversation history; clearing chat removes user/agent history
 while preserving any separate confirmation. Report completed, local commit,
 pushed/PR, and merged/deployed states independently.
 
+**CLONERD-010 — Native Twinerd virtualization core and anti-tamper runtime.**
+Production workstation virtualization MUST compile natively stripped ELF binaries
+(`twinerd`, `clonerd-twin`) with Linux OverlayFS Copy-on-Write storage, asynchronous
+Tokio RFC 8628 pairing, and native RFB/VNC-to-WebSocket bridging. Untrusted runtime
+analysis MUST be halted via `TracerPid != 0` ptrace tripwires and C-ABI validation
+guard `libtwinerd_guard.so`. On-premise enterprise deployments bind node identity
+to cryptographic hardware fingerprints with Ed25519 signatures issued by
+`Tomasz Sapletta Prototypowanie.pl`.
+
+**CLONERD-011 — Zero-trust management bastion and autonomous Koru remediation.**
+The cluster fleet management plane (`cluster_panel`, port 8888) MUST be hosted on an
+isolated asymmetric bastion with zero public inbound exposure. Management push
+vectors use outbound-only SSH with non-interactive keys or mTLS; edge nodes possess
+zero credentials or routes to the bastion, eliminating lateral movement. On confirmed
+breach or L7 tarpit trigger, Koru executes 4-phase autonomous survival: dynamic
+traffic shifting to unpolluted twin/bunker nodes, node firewall isolation, CoW layer
+discard and rebuild, and fail-closed urirun-mail alerts.
+
+**CLONERD-012 — Proprietary anti-AI mining and statutory TDM opt-out.**
+Web applications, frontends, APIs, and proprietary core repositories MUST enforce
+the Wellmanifest Proprietary Anti-AI Mining License with explicit statutory TDM
+Opt-Out under Article 4(3) of EU Directive 2019/790. Automated ingestion, model
+training, and scraping by AI providers (Copilot, ChatGPT, Gemini, Claude, LLaMA)
+are prohibited under exclusive ownership of Tomasz Sapletta Prototypowanie.pl.
+
 ## Compatibility and adoption
 
 This initial version adds a proposed composition profile without migrating any
