@@ -121,20 +121,39 @@ def _validate_port(parsed: SplitResult) -> None:
         raise ValueError("CLONERD-ENV-002: expected origin without secrets or API path")
 
 
-def _is_non_service_host(hostname: str) -> bool:
-    normalized = hostname.rstrip(".").lower()
-    if not normalized or normalized == "localhost" or normalized.endswith(".localhost"):
-        return True
-    try:
-        addr = ipaddress.ip_address(normalized)
-    except ValueError:
-        return False
-    return bool(
+def _is_non_prohibited_ip(
+    addr: ipaddress.IPv4Address | ipaddress.IPv6Address,
+) -> bool:
+    return not (
         addr.is_loopback
         or addr.is_unspecified
         or addr.is_link_local
         or addr.is_multicast
     )
+
+
+def _is_non_service_host(hostname: str) -> bool:
+    normalized = hostname.rstrip(".").lower()
+    if (
+        not normalized
+        or "%" in normalized
+        or normalized == "localhost"
+        or normalized.endswith(".localhost")
+    ):
+        return True
+    try:
+        addr = ipaddress.ip_address(normalized)
+    except ValueError:
+        return False
+    candidates: list[ipaddress.IPv4Address | ipaddress.IPv6Address] = [addr]
+    if isinstance(addr, ipaddress.IPv6Address):
+        if addr.ipv4_mapped is not None:
+            candidates.append(addr.ipv4_mapped)
+        if addr.sixtofour is not None:
+            candidates.append(addr.sixtofour)
+        if addr.teredo is not None:
+            candidates.extend(addr.teredo)
+    return any(not _is_non_prohibited_ip(candidate) for candidate in candidates)
 
 
 def validate_environment(value: Any) -> None:
