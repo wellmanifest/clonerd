@@ -159,6 +159,10 @@ class EnvironmentTests(unittest.TestCase):
             "https://0.0.0.0:8443",
             "https://169.254.169.254",
             "https://[fe80::1]:8443",
+            "https://[::ffff:127.0.0.1]:8443",
+            "https://[::ffff:0.0.0.0]:8443",
+            "https://[::ffff:169.254.169.254]:8443",
+            "https://[::ffff:224.0.0.1]:8443",
         ):
             p = self.example()
             p["deployment"] = "existing-service"
