@@ -183,6 +183,82 @@ class EnvironmentTests(unittest.TestCase):
             with self.assertRaises(ValidationError):
                 c.validate_environment(p)
 
+    def test_ticket_004_parent_symlinks_float_overflow_surrogates_and_cookie_host_aliases(
+        self,
+    ):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            real_dir = tmp_path / "real_dir"
+            real_dir.mkdir()
+            real_file = real_dir / "doc.json"
+            real_file.write_text('{"ok": true}', encoding="utf-8")
+            sym_dir = tmp_path / "sym_dir"
+            sym_dir.symlink_to(real_dir)
+
+            for symlink_path in (
+                sym_dir / "doc.json",
+                Path(str(sym_dir) + "/../real_dir/doc.json"),
+            ):
+                with (
+                    self.subTest(path=str(symlink_path)),
+                    self.assertRaisesRegex(ValueError, "CLONERD-IO-001"),
+                ):
+                    c.read(symlink_path)
+            with self.assertRaisesRegex(ValueError, "CLONERD-IO-002"):
+                c.read(str(real_file) + "\x00evil")
+
+            for bad_json, code in (
+                ('{"x": 1e309}', "CLONERD-PROFILE-004"),
+                ('{"x": -1e309}', "CLONERD-PROFILE-004"),
+                ('{"x": "\\ud800"}', "CLONERD-PROFILE-005"),
+                ('{"\\udfff": 1}', "CLONERD-PROFILE-005"),
+            ):
+                bad_path = real_dir / "bad_payload.json"
+                bad_path.write_text(bad_json, encoding="utf-8")
+                with (
+                    self.subTest(payload=bad_json),
+                    self.assertRaisesRegex(ValueError, code),
+                ):
+                    c.read(bad_path)
+
+        for ctrl_url in ("http://localhost:8891\x7f", "http://localhost:8891\x85"):
+            p = self.example()
+            p["endpoints"]["api"] = ctrl_url
+            with (
+                self.subTest(ctrl_url=repr(ctrl_url)),
+                self.assertRaises((ValueError, ValidationError)),
+            ):
+                c.validate_environment(p)
+
+        for reserved_origin in (
+            "https://255.255.255.255:8443",
+            "https://[::ffff:255.255.255.255]:8443",
+        ):
+            p = self.example()
+            p["deployment"] = "self-hosted"
+            p["endpoints"] = {
+                "api": reserved_origin,
+                "identity": "https://accounts.example.org",
+            }
+            with (
+                self.subTest(origin=reserved_origin),
+                self.assertRaisesRegex(ValueError, "CLONERD-ENV-006"),
+            ):
+                c.validate_environment(p)
+
+        for id_origin, dev_origin in (
+            ("http://[::1]:8790", "http://[0:0:0:0:0:0:0:1]:8791"),
+            ("http://localhost.:8790", "http://localhost:8791"),
+        ):
+            p = self.example()
+            p["endpoints"]["identity"] = id_origin
+            p["endpoints"]["device"] = dev_origin
+            with (
+                self.subTest(pair=(id_origin, dev_origin)),
+                self.assertRaisesRegex(ValueError, "CLONERD-ENV-005"),
+            ):
+                c.validate_environment(p)
+
 
 if __name__ == "__main__":
     unittest.main()
