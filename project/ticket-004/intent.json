@@ -1,0 +1,25 @@
+{
+  "schema": "new-project.intent/v3",
+  "ticket": "ticket-004",
+  "summary": "Harden conformance symlink-parent traversal, non-finite floats, surrogates, and simulator cookie-host canonicalization",
+  "workstream": "standard",
+  "classification": {
+    "kind": "BUG",
+    "priority": "P1",
+    "origin": "health"
+  },
+  "allowedPaths": [
+    "project/ticket-004/**",
+    "TODO.md",
+    "project/TICKETS.md",
+    "standard/conformance.py",
+    "tests/test_conformance.py"
+  ],
+  "forbiddenPaths": [
+    "project/ticket-*/user-*.md"
+  ],
+  "stacks": [],
+  "dependsOn": [],
+  "conflictsWith": [],
+  "integrationTicket": null
+}

@@ -1,4 +1,5 @@
 """Offline reference conformance. No repository, lease or network mutations."""
+
 from __future__ import annotations
 
 import argparse
@@ -6,6 +7,7 @@ import errno
 import functools
 import ipaddress
 import json
+import math
 import os
 import stat
 from pathlib import Path
@@ -34,13 +36,87 @@ def _reject_nonfinite_json(token: str) -> NoReturn:
     raise ValueError(f"CLONERD-PROFILE-004: non-finite JSON constant {token!r}")
 
 
+def _parse_finite_float(token: str) -> float:
+    val = float(token)
+    if not math.isfinite(val):
+        raise ValueError(f"CLONERD-PROFILE-004: non-finite JSON float {token!r}")
+    return val
+
+
+def _has_surrogate(text: str) -> bool:
+    return any(0xD800 <= ord(ch) <= 0xDFFF for ch in text)
+
+
+def _reject_surrogates(value: Any) -> None:
+    stack = [value]
+    while stack:
+        cur = stack.pop()
+        if isinstance(cur, str):
+            if _has_surrogate(cur):
+                raise ValueError(
+                    "CLONERD-PROFILE-005: lone UTF-16 surrogate in JSON input"
+                )
+        elif isinstance(cur, dict):
+            for key, item in cur.items():
+                if isinstance(key, str) and _has_surrogate(key):
+                    raise ValueError(
+                        "CLONERD-PROFILE-005: lone UTF-16 surrogate in JSON input"
+                    )
+                stack.append(item)
+        elif isinstance(cur, list):
+            stack.extend(cur)
+
+
+def _check_no_symlink_path(path: str | Path) -> Path:
+    raw_path = os.fspath(path)
+    if not isinstance(raw_path, str) or not raw_path or "\x00" in raw_path:
+        raise ValueError("CLONERD-IO-002: expected regular JSON file")
+    path_obj = Path(raw_path)
+    if path_obj.is_absolute():
+        cur = Path(path_obj.anchor)
+        walk_parts = path_obj.parts[1:]
+    else:
+        cwd = Path.cwd()
+        if len(cwd.parts) > 2 and cwd.is_symlink():
+            raise ValueError("CLONERD-IO-001: symlink JSON input rejected")
+        for anc in cwd.parents:
+            if len(anc.parts) > 2 and anc.is_symlink():
+                raise ValueError("CLONERD-IO-001: symlink JSON input rejected")
+        cur = cwd
+        walk_parts = path_obj.parts
+    for part in walk_parts:
+        if part in ("", "."):
+            continue
+        if part == "..":
+            cur = cur.parent
+            continue
+        cur = cur / part
+        if len(cur.parts) > 2 and cur.is_symlink():
+            raise ValueError("CLONERD-IO-001: symlink JSON input rejected")
+    abs_path = Path(os.path.abspath(raw_path))
+    if abs_path.is_symlink():
+        raise ValueError("CLONERD-IO-001: symlink JSON input rejected")
+    for anc in abs_path.parents:
+        if len(anc.parts) > 2 and anc.is_symlink():
+            raise ValueError("CLONERD-IO-001: symlink JSON input rejected")
+    return abs_path
+
+
 def read(path: str | Path) -> Any:
-    target = Path(path)
-    flags = (
-        os.O_RDONLY
-        | getattr(os, "O_NOFOLLOW", 0)
-        | getattr(os, "O_NONBLOCK", 0)
-    )
+    target = _check_no_symlink_path(path)
+    try:
+        before = os.lstat(target)
+    except OSError as exc:
+        if exc.errno == errno.ELOOP:
+            raise ValueError("CLONERD-IO-001: symlink JSON input rejected") from exc
+        if exc.errno == errno.EISDIR:
+            raise ValueError("CLONERD-IO-002: expected regular JSON file") from exc
+        raise
+    if stat.S_ISLNK(before.st_mode):
+        raise ValueError("CLONERD-IO-001: symlink JSON input rejected")
+    if not stat.S_ISREG(before.st_mode):
+        raise ValueError("CLONERD-IO-002: expected regular JSON file")
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
     try:
         fd = os.open(target, flags)
     except OSError as exc:
@@ -55,6 +131,8 @@ def read(path: str | Path) -> Any:
             raise ValueError("CLONERD-IO-001: symlink JSON input rejected")
         if not stat.S_ISREG(st.st_mode):
             raise ValueError("CLONERD-IO-002: expected regular JSON file")
+        if (before.st_dev, before.st_ino) != (st.st_dev, st.st_ino):
+            raise ValueError("CLONERD-IO-002: JSON file inode changed during open")
         if st.st_size > MAX_JSON_BYTES:
             raise ValueError("CLONERD-IO-003: JSON file exceeds 1 MiB limit")
         chunks: list[bytes] = []
@@ -70,11 +148,14 @@ def read(path: str | Path) -> Any:
     finally:
         os.close(fd)
     text = b"".join(chunks).decode("utf-8")
-    return json.loads(
+    decoded = json.loads(
         text,
         object_pairs_hook=unique_object,
         parse_constant=_reject_nonfinite_json,
+        parse_float=_parse_finite_float,
     )
+    _reject_surrogates(decoded)
+    return decoded
 
 
 @functools.lru_cache(maxsize=4)
@@ -129,6 +210,7 @@ def _is_non_prohibited_ip(
         or addr.is_unspecified
         or addr.is_link_local
         or addr.is_multicast
+        or addr.is_reserved
     )
 
 
@@ -156,13 +238,49 @@ def _is_non_service_host(hostname: str) -> bool:
     return any(not _is_non_prohibited_ip(candidate) for candidate in candidates)
 
 
+def _canonical_simulator_host(hostname: str) -> str | None:
+    if not hostname or "%" in hostname:
+        return None
+    normalized = hostname.rstrip(".").lower()
+    if normalized == "localhost":
+        return "localhost"
+    try:
+        addr = ipaddress.ip_address(normalized)
+    except ValueError:
+        return None
+    if isinstance(addr, ipaddress.IPv6Address) and (
+        addr.ipv4_mapped is not None
+        or addr.sixtofour is not None
+        or addr.teredo is not None
+    ):
+        return None
+    compressed = addr.compressed
+    if compressed in ("127.0.0.1", "::1"):
+        return compressed
+    return None
+
+
+def _has_disallowed_url_char(url: str) -> bool:
+    for ch in url:
+        code = ord(ch)
+        if (
+            ch.isspace()
+            or code < 32
+            or code == 0x7F
+            or 0x80 <= code <= 0x9F
+            or 0xD800 <= code <= 0xDFFF
+        ):
+            return True
+    return False
+
+
 def validate_environment(value: Any) -> None:
     _validator("schemas/environment.schema.json").validate(value)
     local = value["deployment"] == "local-simulator"
     if local and "device" not in value["endpoints"]:
         raise ValueError("CLONERD-ENV-001: simulator requires device endpoint")
     for url in value["endpoints"].values():
-        if any(ch.isspace() or ord(ch) < 32 for ch in url):
+        if _has_disallowed_url_char(url):
             raise ValueError(
                 "CLONERD-ENV-002: expected origin without secrets or API path"
             )
@@ -180,10 +298,9 @@ def validate_environment(value: Any) -> None:
                 "CLONERD-ENV-002: expected origin without secrets or API path"
             )
         if local:
-            if parsed.scheme not in ("http", "https") or parsed.hostname not in (
-                "localhost",
-                "127.0.0.1",
-                "::1",
+            if (
+                parsed.scheme not in ("http", "https")
+                or _canonical_simulator_host(parsed.hostname) is None
             ):
                 raise ValueError("CLONERD-ENV-003: simulator must stay on loopback")
         else:
@@ -194,19 +311,20 @@ def validate_environment(value: Any) -> None:
                     "CLONERD-ENV-006: service endpoint cannot target loopback, "
                     "unspecified or link-local host"
                 )
-    if (
-        local
-        and urlsplit(value["endpoints"]["identity"]).hostname
-        == urlsplit(value["endpoints"]["device"]).hostname
+    if local and (
+        _canonical_simulator_host(
+            urlsplit(value["endpoints"]["identity"]).hostname or ""
+        )
+        == _canonical_simulator_host(
+            urlsplit(value["endpoints"]["device"]).hostname or ""
+        )
     ):
         raise ValueError("CLONERD-ENV-005: separate simulator cookie hostnames")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "profile", nargs="?", default=ROOT / "profiles/clonerd.v1.json"
-    )
+    parser.add_argument("profile", nargs="?", default=ROOT / "profiles/clonerd.v1.json")
     parser.add_argument("--environment", type=Path)
     args = parser.parse_args()
     if args.environment:
