@@ -7,9 +7,7 @@ from pathlib import Path
 from jsonschema import ValidationError
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location(
-    "conformance", ROOT / "standard/conformance.py"
-)
+spec = importlib.util.spec_from_file_location("conformance", ROOT / "standard/conformance.py")
 c = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(c)
 
@@ -87,14 +85,9 @@ class ConformanceTests(unittest.TestCase):
                 c.read(huge_file)
 
     def test_all_modes_and_session_states(self):
-        expected = {
-            (False, "demo"): "anonymous",
-            (False, "user"): "anonymous",
-            (False, "auto"): "anonymous",
-            (True, "demo"): "demo",
-            (True, "user"): "authenticated",
-            (True, "auto"): "auto",
-        }
+        expected = {(False, "demo"): "anonymous", (False, "user"): "anonymous",
+                    (False, "auto"): "anonymous", (True, "demo"): "demo",
+                    (True, "user"): "authenticated", (True, "auto"): "auto"}
         for args, state in expected.items():
             with self.subTest(args=args):
                 self.assertEqual(c.presentation(*args)["state"], state)
@@ -122,10 +115,7 @@ class EnvironmentTests(unittest.TestCase):
         for kind in ("existing-service", "self-hosted"):
             p = self.example()
             p["deployment"] = kind
-            p["endpoints"] = {
-                "api": "https://api.example.org",
-                "identity": "https://accounts.example.org",
-            }
+            p["endpoints"] = {"api": "https://api.example.org", "identity": "https://accounts.example.org"}
             p["auth"] = {"method": "device-token", "tokenEnv": "MY_DEVICE_TOKEN"}
             c.validate_environment(p)
         intranet = self.example()
@@ -137,35 +127,20 @@ class EnvironmentTests(unittest.TestCase):
         c.validate_environment(intranet)
 
     def test_invalid_urls_and_secrets_rejected(self):
-        for url in (
-            "https://user:secret@example.org",
-            "http://example.org",
-            "file:///tmp/a",
-            "http://localhost:8891/v1",
-            "http://localhost:8891?token=secret",
-        ):
+        for url in ("https://user:secret@example.org", "http://example.org", "file:///tmp/a",
+                    "http://localhost:8891/v1", "http://localhost:8891?token=secret"):
             p = self.example()
             p["endpoints"]["api"] = url
-            with (
-                self.subTest(url=url),
-                self.assertRaises((ValueError, ValidationError)),
-            ):
+            with self.subTest(url=url), self.assertRaises((ValueError, ValidationError)):
                 c.validate_environment(p)
-        for url in (
-            "http://localhost:0",
-            "http://localhost:99999",
-            "http://localhost:bad",
-            "http://localhost:8891\n",
-        ):
+        for url in ("http://localhost:0", "http://localhost:99999", "http://localhost:bad",
+                    "http://localhost:8891\n"):
             p = self.example()
             p["endpoints"]["api"] = url
             with self.subTest(url=url), self.assertRaises(ValueError):
                 c.validate_environment(p)
-        for auth in (
-            {"method": "device-token"},
-            {"method": "device-token", "tokenEnv": "real-secret-value"},
-            {"method": "user-session", "password": "secret"},
-        ):
+        for auth in ({"method": "device-token"}, {"method": "device-token", "tokenEnv": "real-secret-value"},
+                     {"method": "user-session", "password": "secret"}):
             p = self.example()
             p["auth"] = auth
             with self.assertRaises(ValidationError):
@@ -191,13 +166,9 @@ class EnvironmentTests(unittest.TestCase):
         ):
             p = self.example()
             p["deployment"] = "existing-service"
-            p["endpoints"] = {
-                "api": unsafe_origin,
-                "identity": "https://accounts.example.org",
-            }
-            with (
-                self.subTest(origin=unsafe_origin),
-                self.assertRaisesRegex(ValueError, "CLONERD-ENV-006"),
+            p["endpoints"] = {"api": unsafe_origin, "identity": "https://accounts.example.org"}
+            with self.subTest(origin=unsafe_origin), self.assertRaisesRegex(
+                ValueError, "CLONERD-ENV-006"
             ):
                 c.validate_environment(p)
         p = self.example()
@@ -250,7 +221,6 @@ class EnvironmentTests(unittest.TestCase):
                 ):
                     c.read(bad_path)
 
-        # DEL and C1 control characters in URLs are rejected
         for ctrl_url in ("http://localhost:8891\x7f", "http://localhost:8891\x85"):
             p = self.example()
             p["endpoints"]["api"] = ctrl_url
@@ -260,7 +230,6 @@ class EnvironmentTests(unittest.TestCase):
             ):
                 c.validate_environment(p)
 
-        # Broadcast/reserved IPs are rejected for remote service endpoints while intranet 10.x stays allowed
         for reserved_origin in (
             "https://255.255.255.255:8443",
             "https://[::ffff:255.255.255.255]:8443",
@@ -277,7 +246,6 @@ class EnvironmentTests(unittest.TestCase):
             ):
                 c.validate_environment(p)
 
-        # Uncompressed IPv6 loopback alias and trailing-dot localhost cannot bypass separate simulator cookie hostnames
         for id_origin, dev_origin in (
             ("http://[::1]:8790", "http://[0:0:0:0:0:0:0:1]:8791"),
             ("http://localhost.:8790", "http://localhost:8791"),
